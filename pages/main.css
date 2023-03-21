@@ -4,10 +4,33 @@
 @import url(../blocks/header/header.css);
 /* profile */
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__add/profile__add.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__pic/profile__pic.css);
+@import url(../blocks/profile/__redactor/profile__redactor.css);
+@import url(../blocks/profile/__status/profile__status.css);
+@import url(../blocks/profile/__redactor-img/profile__redactor-img.css);
 /* elements */
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__description/card__description.css);
+@import url(../blocks/card/__img/card__img.css);
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__text/card__text.css);
+
 /* footer */
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/copyright/copyright.css);
+/* popup */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/form/form.css);
+@import url(../blocks/popup/form/__heading/forn__heading.css);
+@import url(../blocks/popup/form/__name/form__name.css);
+@import url(../blocks/popup/form/__save-text/form__save-text.css);
+@import url(../blocks/popup/form/__save/form__save.css);
+@import url(../blocks/popup/form/__close/form__close.css);
+
 
 .page {
     color: white;
@@ -15,7 +38,7 @@
     background-color: black;
     font-family: 'Inter', sans-serif;
     max-width: 100%;
-
+    position: relative;
 }
 
 button {

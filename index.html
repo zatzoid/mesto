@@ -9,17 +9,32 @@
 </head>
 
 <body class="page">
+    <div class="popup">
+        <form class="form" action="">
+            <button class="form__close" type="reset"> <img src="./images/Close-Icon.svg" alt="х"> </button>
+            <h2 class="form__heading">Редактировать профиль</h2>
+
+            <input class="form__element form__name" id="name" type="text">
+            <input class="form__element form__status" id="status" type="text">
+
+            <button class="form__save" type="submit">
+                <p class="form__save-text">Сохранить</p>
+            </button>
+        </form>
+    </div>
     <header class="header">
-        <img src="./images/logo-white.svg" alt="местечко">
+        <img class="header__logo" src="./images/logo-white.svg" alt="местечко">
     </header>
     <main class="content">
+
         <section class="profile">
             <img class="profile__pic" src="./images/profile-pic.jpg" alt="профиль-пик">
             <div class="profile__info">
 
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__redactor"> <img src="./images/redactor.svg" alt=""></button>
-                <p class="profile__status">Исследователь океана</p>
+                <h1 class="profile__name" id="profile-name">Жак-Ив Кусто</h1>
+                <button class="profile__redactor"> <img class="profile__redactor-img" src="./images/redactor.svg"
+                        alt=""></button>
+                <p class="profile__status" id="profile-status">Исследователь океана</p>
             </div>
             <button class="profile__add"> <img src="./images/plus.svg" alt="плюс"></button>
         </section>

@@ -1,0 +1,12 @@
+.profile__redactor-img {
+    max-width: 10px;
+    display: flex;
+    margin: auto;
+}
+
+@media screen and (max-width:550px) {
+.profile__redactor-img{
+    max-width: 7.5px;
+}
+}
+

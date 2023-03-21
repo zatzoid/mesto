@@ -1,0 +1,6 @@
+.profile__pic {
+    grid-row: span 2;
+    max-width: 120px;
+    border-radius: 50%;
+    justify-self: center;
+}

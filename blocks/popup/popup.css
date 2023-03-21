@@ -1,0 +1,20 @@
+.popup {
+  /*   display: none; */
+    display: flex;
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+
+
+}
+
+
+
+
+
+
+
+
+
+
