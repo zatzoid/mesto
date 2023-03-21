@@ -1,0 +1,64 @@
+.profile {
+    display: grid;
+    margin: auto;
+    max-width: 880px;
+    grid-template-columns: min-content 1fr 1fr;
+    grid-template-rows: min-content 1fr;
+    /*  grid-template-areas: 
+    "prof-pic name redactor plus"
+    "prof-pic status status status plus"; */
+
+}
+
+.profile__info {margin-left: 30px;
+    align-self: center;
+    display: grid;
+    grid-row: span 2;
+    grid-template-columns: max-content min-content;
+    grid-template-rows: auto;
+    gap: 16px 18px ;
+
+}
+
+.profile__pic {
+    /* grid-area: prof-pic ; */
+    grid-row: span 2;
+    max-width: 120px;
+    border-radius: 50%;
+}
+
+.profile__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    margin: 0;
+    /*   grid-area: name ; */
+}
+
+.profile__redactor { cursor: pointer;
+    /* grid-area: redactor ; */
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.profile__status {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /*  grid-area: status; */
+    margin: 0;
+}
+
+.profile__add {
+    cursor: pointer;
+    align-self: center;
+    justify-self: end;
+    width: 150px;
+    height: 50px;
+    grid-row: span 2;
+    /*  grid-area: plus; */
+    margin: 0;
+}

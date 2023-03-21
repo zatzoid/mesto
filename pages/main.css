@@ -1,0 +1,25 @@
+@import url(../vendor/vendor.css);
+@import url(../fonts/stylesheet.css);
+/* head */
+@import url(../blocks/header/header.css);
+/* profile */
+@import url(../blocks/profile/profile.css);
+/* elements */
+@import url(../blocks/elements/elements.css);
+/* footer */
+@import url(../blocks/footer/footer.css);
+
+.page {
+    color: white;
+    margin: 0;
+    background-color: black;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+
+}
+
+button {
+    background: none;
+    box-shadow: none;
+    border: 1px solid white;
+}
