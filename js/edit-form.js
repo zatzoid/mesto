@@ -1,23 +1,43 @@
+let nameText = document.querySelector(".profile__name");
+let statusText = document.querySelector(".profile__status");
+let submitBtn = document.querySelector(".form__save");
 let popup = document.querySelector(".popup");
 let redactor = document.querySelector(".profile__redactor");
-let close = document.querySelector(".form__close");
+let closeBtn = document.querySelector(".form__close");
+let form = document.querySelector(".form");
+let nameForm = document.querySelector(".form__name")
+let statusFrom = document.querySelector(".form__status")
+
 /* open */
 function openRedactor() {
-    console.log('button-ok');
-    popup.classList.add('popup_opened');
-    
+
+    popup.classList.add("popup_opened");
+    nameForm.value = nameText.textContent;
+    statusFrom.value = statusText.textContent
+
+
 };
-redactor.addEventListener('click', openRedactor);
+redactor.addEventListener("click", openRedactor);
 /* close */
 function closeRedactor() {
-    console.log('close ok')
-popup.classList.remove('popup_opened')
+
+    popup.classList.remove("popup_opened")
 
 };
 
-close.addEventListener('click', closeRedactor);
-/*  */
+closeBtn.addEventListener("click", closeRedactor);
 
-let name = document.querySelector(".form__name");
-let status = document.querySelector(".form__status");
+/* save */
+
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+
+    nameText.textContent = nameForm.value
+    statusText.textContent = statusFrom.value
+
+    popup.classList.remove("popup_opened")
+
+};
+
+form.addEventListener("submit", handleFormSubmit);
 
