@@ -24,12 +24,15 @@
 @import url(../blocks/footer/copyright/copyright.css);
 /* popup */
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/form/form.css);
-@import url(../blocks/popup/form/__heading/forn__heading.css);
-@import url(../blocks/popup/form/__name/form__name.css);
-@import url(../blocks/popup/form/__save-text/form__save-text.css);
-@import url(../blocks/popup/form/__save/form__save.css);
-@import url(../blocks/popup/form/__close/form__close.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__close/popup__close.css);
+/* button */
+@import url(../blocks/button/button.css);
 
 
 .page {
@@ -41,8 +44,3 @@
     position: relative;
 }
 
-button {
-    background: none;
-    box-shadow: none;
-    border: 1px solid white;
-}

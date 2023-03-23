@@ -8,6 +8,10 @@
     margin: 0;
     border-radius: 2px;
 }
+.profile__add:hover{
+opacity: 0.6;
+
+}
 
 @media screen and (max-width:550px) {
     .profile__add {

@@ -1,12 +1,12 @@
 let nameText = document.querySelector(".profile__name");
 let statusText = document.querySelector(".profile__status");
-let submitBtn = document.querySelector(".form__save");
+let submitBtn = document.querySelector(".popup__save");
 let popup = document.querySelector(".popup");
 let redactor = document.querySelector(".profile__redactor");
-let closeBtn = document.querySelector(".form__close");
-let form = document.querySelector(".form");
-let nameForm = document.querySelector(".form__name")
-let statusFrom = document.querySelector(".form__status")
+let closeBtn = document.querySelector(".popup__close");
+let form = document.querySelector("#form");
+let nameForm = document.querySelector("#form__name")
+let statusFrom = document.querySelector("#form__status")
 
 /* open */
 function openRedactor() {
@@ -35,7 +35,7 @@ function handleFormSubmit(evt) {
     nameText.textContent = nameForm.value
     statusText.textContent = statusFrom.value
 
-    popup.classList.remove("popup_opened")
+    popup.classList.remove("popup_opened");
 
 };
 

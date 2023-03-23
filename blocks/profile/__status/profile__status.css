@@ -19,6 +19,7 @@
 @media screen and (max-width:550px) {
 
     .profile__status {
+        max-width: 262px;
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
