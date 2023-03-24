@@ -14,12 +14,12 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url('Inter-LightBETA.eot');
-    src: local('Inter Light BETA'), local('Inter-LightBETA'),
-        url('Inter-LightBETA.eot?#iefix') format('embedded-opentype'),
-        url('Inter-LightBETA.woff2') format('woff2'),
-        url('Inter-LightBETA.woff') format('woff'),
-        url('Inter-LightBETA.ttf') format('truetype');
+    src: url('Inter-Regular.eot');
+    src: local('Inter Light BETA'), local('Inter-Regular'),
+        url('Inter-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Inter-Regular.woff2') format('woff2'),
+        url('Inter-Regular.woff') format('woff'),
+        url('Inter-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }

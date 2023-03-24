@@ -1,16 +1,20 @@
-.elements {
+.cards {
     padding: 0 20px 0;
     list-style: none;
     display: grid;
     max-width: 880px;
     margin: 47px auto 0;
     gap: 20px 17px;
-    grid-template-columns: repeat(3, minmax(242px, 282px));
-    grid-template-rows: repeat(auto-fill, minmax(1fr, 361px));
+    grid-template-columns: repeat(auto-fill, 282px);
+    grid-template-rows: repeat(auto-fill, 361px);
     justify-content: center;
 }
 
-@media screen and (max-width:780px) {
+/* резиновые ячейки */
+/*     grid-template-columns: repeat(auto-fill, minmax(242px, 282px));
+    grid-template-rows: repeat(auto-fill, minmax(1fr, 361px)); */
+
+/* @media screen and (max-width:780px) {
     .elements {
         grid-template-columns: repeat(2, minmax(242px, 282px));
 
@@ -24,4 +28,4 @@
 
     }
 
-}
+} */
