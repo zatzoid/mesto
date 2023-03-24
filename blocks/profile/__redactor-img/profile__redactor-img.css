@@ -5,8 +5,7 @@
 }
 
 @media screen and (max-width:550px) {
-.profile__redactor-img{
-    max-width: 7.5px;
+    .profile__redactor-img {
+        max-width: 7.5px;
+    }
 }
-}
-

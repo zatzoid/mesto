@@ -4,7 +4,6 @@
     padding: 34px 36px 37px;
     box-sizing: border-box;
     color: black;
-    
     min-width: 430px;
     margin: auto;
     background-color: white;
@@ -14,7 +13,7 @@
 @media screen and (max-width:520px) {
 
     .popup__content {
-        
+
         min-width: 282px;
 
         padding: 25px 22px;

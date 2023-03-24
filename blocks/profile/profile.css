@@ -10,7 +10,7 @@
 
 @media screen and (max-width:780px) {
 
-  .profile{
+  .profile {
 
     grid-template-columns: 1fr;
   }

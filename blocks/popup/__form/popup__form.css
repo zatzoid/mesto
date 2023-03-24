@@ -6,8 +6,9 @@
 }
 
 @media screen and (max-width:520px) {
-.popup__form{
-margin-top: 70px;}
+    .popup__form {
+        margin-top: 70px;
+    }
 
 
 }
