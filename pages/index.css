@@ -18,9 +18,11 @@
 
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
+@import url(../blocks/card/__cleaner/card__cleaner.css);
 @import url(../blocks/card/__description/card__description.css);
 @import url(../blocks/card/__img/card__img.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
 @import url(../blocks/card/__text/card__text.css);
 
 /* footer */
@@ -36,7 +38,9 @@
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__close-img/popup__close-img.css);
-
-
+/*  */
+@import url(../blocks/popup/__img/popup__img.css);
+@import url(../blocks/popup/__img-container/popup__img-container.css);
+@import url(../blocks/popup/__text/popup__text.css);
 
 
