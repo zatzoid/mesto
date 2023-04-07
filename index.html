@@ -10,47 +10,45 @@
 
 <body class="page">
 
-    <div class="popup" id="popupRed"><!-- back -->
+    <div class="popup" id="popupRedactor"><!-- back -->
         <div class="popup__content">
 
-            <button type="button" class="popup__close" id="closeRed"> <img class="popup__close-img"
+            <button type="button" class="popup__close" id="closeRedactor" > <img class="popup__close-img"
                     src="./images/Close-Icon.svg" alt="х"> </button>
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form class="popup__form" name="redForm" id="form">
-                <input class="popup__element " id="form__name" type="text" name="redName">
-                <input class="popup__element " id="form__status" type="text" name="redStatus">
+            <form class="popup__form" name="redactorForm" id="formRedactor">
+                <input class="popup__element " id="nameInput" type="text" name="redactorName">
+                <input class="popup__element " id="statusInput" type="text" name="redactorStatus">
 
-                <button class="popup__save" type="submit">
+                <button class="popup__save" id="submitReadctorBtn" type="submit">
                     Сохранить
                 </button>
             </form>
         </div>
     </div>
-    <div class="popup" id="popupAdd">
+    <div class="popup" id="popupAdder">
         <div class="popup__content">
 
-            <button type="button" class="popup__close" id="closeAdd"> <img class="popup__close-img"
+            <button type="button" class="popup__close" id="closeAdder"> <img class="popup__close-img"
                     src="./images/Close-Icon.svg" alt="х"> </button>
             <h2 class="popup__heading">Новое место</h2>
-            <form class="popup__form" name="addForm" id="formAdd">
-                <input class="popup__element " id="addName" type="text" name="addName" placeholder="название">
-                <input class="popup__element " id="addPhoto" type="text" name="addPhoto"
+            <form class="popup__form" id="adderForm" name="adderForm">
+                <input class="popup__element " id="inputPlace" type="text" name="inputPlace" placeholder="название">
+                <input class="popup__element " id="inputPhoto" type="text" name="inputPhoto"
                     placeholder="ссылка на картинку">
 
-                <button class="popup__save" id="saveAdd" type="submit">
-                    Сохранить
+                <button class="popup__save" id="saveAddBtn" type="submit">
+                    Создать
                 </button>
             </form>
         </div>
     </div>
     <div class="popup " id="popupImg">
         <div class="popup__img-container">
-            <button class="popup__close" id="closeImg"><img class="popup__close-img" src="./images/Close-Icon.svg"
-                alt="х"></button>
-            <img class="popup__img"
-                src="."
-                alt=".">
-                
+            <button type="button" class="popup__close" id="closeImg"><img class="popup__close-img" src="./images/Close-Icon.svg"
+                    alt="х"></button>
+            <img class="popup__img" src="." alt=".">
+
             <p class="popup__text"> </p>
         </div>
     </div>
@@ -89,7 +87,7 @@
             </div>
         </li>
     </template>
-    <script src="./js/edit-form.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>

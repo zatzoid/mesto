@@ -1,25 +1,28 @@
-let nameText = document.querySelector(".profile__name");
-let statusText = document.querySelector(".profile__status");
-let submitBtn = document.querySelector(".popup__save");
-let popupRed = document.querySelector("#popupRed");
-let redactor = document.querySelector(".profile__redactor");
-let closeBtn = document.querySelector("#closeRed");
-let form = document.querySelector("#form");
-let nameForm = document.querySelector("#form__name");
-let statusFrom = document.querySelector("#form__status");
+/* redactor */
+const profileName = document.querySelector(".profile__name");
+const profileStatus = document.querySelector(".profile__status");
+const popupRedactor = document.querySelector("#popupRedactor");
+const openRedactorBtn = document.querySelector(".profile__redactor");
+const inputName = popupRedactor.querySelector("#nameInput");
+const inputStatus = popupRedactor.querySelector("#statusInput");
+const closeRedactorBtn = popupRedactor.querySelector("#closeRedactor");
+const formRedactor = popupRedactor.querySelector("#formRedactor");
+/* img add popup */
 const cardsContainer = document.querySelector(".cards");
-const popupAdd = document.querySelector("#popupAdd");
-const addButon = document.querySelector(".profile__add");
-const closeBtnAdder = document.querySelector("#closeAdd")
+const popupAdder = document.querySelector("#popupAdder");
+const openAdderBtn = document.querySelector(".profile__add");
+const adderForm = popupAdder.querySelector("#adderForm");
+const closeAdderBtn = popupAdder.querySelector("#closeAdder")
+const inputPlace = adderForm.querySelector("#inputPlace");
+const inputPhoto = adderForm.querySelector("#inputPhoto");
+/* template */
 const cardTemplate = document.querySelector("#card-template").content;
 const cardEl = cardTemplate.querySelector(".card");
-const formAdd = document.querySelector("#formAdd")
-const saveAdd = document.querySelector("#saveAdd");
 const cardImg = cardEl.querySelector(".card__img");
 const cardText = cardEl.querySelector(".card__text");
-const addName = document.querySelector("#addName");
-const addPhoto = document.querySelector("#addPhoto");
-const popupImg = document.querySelector("#popupImg")
+/* img fullscreen popup */
+const popupImg = document.querySelector("#popupImg");
+/* default picture */
 const initialCards = [
   {
     name: 'Архыз',
@@ -48,7 +51,7 @@ const initialCards = [
 ];
 /* CARD ADDER */
 
-function cardAdder(element) {
+function addNewCard(element) {
   const cardEl = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImg = cardEl.querySelector(".card__img");
   const cardText = cardEl.querySelector(".card__text");
@@ -73,78 +76,72 @@ function cardAdder(element) {
     popupImg.classList.remove("popup_opened");
   });
   /* popup img */
-  const popupImgEl = document.querySelector(".popup__img");
-  const popupImgText = document.querySelector(".popup__text");
+  const popupImgEl = popupImg.querySelector(".popup__img");
+  const popupImgText = popupImg.querySelector(".popup__text");
   cardImg.addEventListener("click", () => {
     popupImg.classList.add("popup_opened");
     popupImgEl.src = element.link;
     popupImgEl.alt = element.name;
     popupImgText.textContent = element.name
   });
-
-
-
   return cardEl;
 };
 
 /* auto adder  */
 initialCards.forEach((element) => {
-  const autoAdd = cardAdder(element);
+  const autoAdd = addNewCard(element);
   cardsContainer.append(autoAdd);
 
 });
 /* save form add */
 function saveAddedPhoto(element) {
   element.preventDefault();
-  element.link = addPhoto.value;
-  element.name = addName.value;
-  const newCard = cardAdder(element);
+  element = {
+    link: inputPhoto.value,
+    name: inputPlace.value
+  };
+  const newCard = addNewCard(element);
   cardsContainer.prepend(newCard);
-  closeAdder();
-  formAdd.reset()
+  closePopup(popupAdder)
+  adderForm.reset()
 };
 
-formAdd.addEventListener("submit", saveAddedPhoto);
+adderForm.addEventListener("submit", saveAddedPhoto);
+/* open popup*/
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+/* close popup*/
+function closePopup(popup) {
+  popup.classList.remove("popup_opened")
+}
+/* open redactor */
+openRedactorBtn.addEventListener("click", () => {
+  openPopup(popupRedactor);
+  inputName.value = profileName.textContent;
+  inputStatus.value = profileStatus.textContent
+});
+/* open adder */
+openAdderBtn.addEventListener("click", () => {
+  openPopup(popupAdder);
+});
 
-
-
-/* open */
-function openRedactor() {
-  popupRed.classList.add("popup_opened");
-  nameForm.value = nameText.textContent;
-  statusFrom.value = statusText.textContent
-};
-redactor.addEventListener("click", openRedactor);
-/* close */
-function closeRedactor() {
-
-  popupRed.classList.remove("popup_opened")
-
-};
-
-closeBtn.addEventListener("click", closeRedactor);
-/* add */
-
-function openAdder() {
-  popupAdd.classList.add("popup_opened");
-};
-addButon.addEventListener("click", openAdder);
-
-
-function closeAdder() {
-  popupAdd.classList.remove("popup_opened");
-  console.log("close")
-};
-
-closeBtnAdder.addEventListener("click", closeAdder);
+/* close redactor*/
+closeRedactorBtn.addEventListener("click", () => {
+  closePopup(popupRedactor);
+});
+/* close adder */
+closeAdderBtn.addEventListener("click", () => {
+  closePopup(popupAdder)
+});
 /* save */
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  nameText.textContent = nameForm.value;
-  statusText.textContent = statusFrom.value;
-  closeRedactor()
+  profileName.textContent = inputName.value;
+  profileStatus.textContent = inputStatus.value;
+  closePopup(popupRedactor);
 };
 
-form.addEventListener("submit", handleFormSubmit);
+formRedactor.addEventListener("submit", handleFormSubmit);
 
