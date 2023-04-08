@@ -73,13 +73,13 @@ function addNewCard(element) {
   /* close */
   const closeImg = document.querySelector("#closeImg")
   closeImg.addEventListener("click", () => {
-    popupImg.classList.remove("popup_opened");
+    closePopup(popupImg);
   });
   /* popup img */
   const popupImgEl = popupImg.querySelector(".popup__img");
   const popupImgText = popupImg.querySelector(".popup__text");
   cardImg.addEventListener("click", () => {
-    popupImg.classList.add("popup_opened");
+    openPopup(popupImg);
     popupImgEl.src = element.link;
     popupImgEl.alt = element.name;
     popupImgText.textContent = element.name
@@ -96,11 +96,11 @@ initialCards.forEach((element) => {
 /* save form add */
 function saveAddedPhoto(element) {
   element.preventDefault();
-  element = {
+  const newCardValue = {
     link: inputPhoto.value,
     name: inputPlace.value
   };
-  const newCard = addNewCard(element);
+  const newCard = addNewCard(newCardValue);
   cardsContainer.prepend(newCard);
   closePopup(popupAdder)
   adderForm.reset()
