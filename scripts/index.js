@@ -1,3 +1,4 @@
+
 /* redactor */
 const profileName = document.querySelector(".profile__name");
 const profileStatus = document.querySelector(".profile__status");
@@ -108,13 +109,46 @@ function saveAddedPhoto(element) {
 
 adderForm.addEventListener("submit", saveAddedPhoto);
 /* open popup*/
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+
+  /* закрытие при нажатии на оверлей */
+  popup.addEventListener('click', (event) => {
+
+    if (event.target === popup) {
+      closePopup(popup)
+    }
+  });
+  /* закрытие при нажатии клавиши */
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePopup(popup)
+    }
+  })
 }
+
+
 /* close popup*/
 function closePopup(popup) {
-  popup.classList.remove("popup_opened")
+
+  popup.classList.remove("popup_opened");
+  
+  popup.removeEventListener('click', (event) => {
+
+    if (event.target === popup) {
+      closePopup(popup)
+    }
+  });
+  
+  document.removeEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePopup(popup)
+    }
+  })
+  
 }
+
 /* open redactor */
 openRedactorBtn.addEventListener("click", () => {
   openPopup(popupRedactor);
@@ -130,10 +164,16 @@ openAdderBtn.addEventListener("click", () => {
 closeRedactorBtn.addEventListener("click", () => {
   closePopup(popupRedactor);
 });
+
 /* close adder */
 closeAdderBtn.addEventListener("click", () => {
   closePopup(popupAdder)
+  adderForm.reset()
 });
+/* esc */
+
+
+
 /* save */
 
 function handleFormSubmit(evt) {
@@ -144,4 +184,5 @@ function handleFormSubmit(evt) {
 };
 
 formRedactor.addEventListener("submit", handleFormSubmit);
+
 

@@ -10,15 +10,19 @@
 
 <body class="page">
 
-    <div class="popup" id="popupRedactor"><!-- back -->
+    <div class="popup" id="popupRedactor"><!-- redactor -->
         <div class="popup__content">
 
-            <button type="button" class="popup__close" id="closeRedactor" > <img class="popup__close-img"
+            <button type="button" class="popup__close" id="closeRedactor"> <img class="popup__close-img"
                     src="./images/Close-Icon.svg" alt="х"> </button>
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form class="popup__form" name="redactorForm" id="formRedactor">
-                <input class="popup__element " id="nameInput" type="text" name="redactorName">
-                <input class="popup__element " id="statusInput" type="text" name="redactorStatus">
+            <form class="popup__form" name="redactorForm" id="formRedactor" novalidate>
+                <input class="popup__element " id="nameInput" type="text" name="redactorName" required minlength="2"
+                    maxlength="40">
+                <span class="popup__element-error popup__element-error_size nameInput-error"></span>
+                <input class="popup__element " id="statusInput" type="text" name="redactorStatus" required minlength="2"
+                    maxlength="200">
+                <span class="popup__element-error popup__element-error_size statusInput-error"></span>
 
                 <button class="popup__save" id="submitReadctorBtn" type="submit">
                     Сохранить
@@ -26,16 +30,19 @@
             </form>
         </div>
     </div>
-    <div class="popup" id="popupAdder">
+    <div class="popup" id="popupAdder"><!-- add -->
         <div class="popup__content">
 
             <button type="button" class="popup__close" id="closeAdder"> <img class="popup__close-img"
                     src="./images/Close-Icon.svg" alt="х"> </button>
             <h2 class="popup__heading">Новое место</h2>
-            <form class="popup__form" id="adderForm" name="adderForm">
-                <input class="popup__element " id="inputPlace" type="text" name="inputPlace" placeholder="название">
-                <input class="popup__element " id="inputPhoto" type="text" name="inputPhoto"
-                    placeholder="ссылка на картинку">
+            <form class="popup__form" id="adderForm" name="adderForm" novalidate>
+                <input class="popup__element " id="inputPlace" type="text" name="inputPlace" placeholder="название"
+                    minlength="2" maxlength="30" required>
+                    <span class="popup__element-error popup__element-error_size inputPlace-error"></span>
+                <input class="popup__element " id="inputPhoto" type="url" name="inputPhoto"
+                    placeholder="ссылка на картинку" required>
+                    <span class="popup__element-error popup__element-error_size inputPhoto-error"></span>
 
                 <button class="popup__save" id="saveAddBtn" type="submit">
                     Создать
@@ -45,8 +52,8 @@
     </div>
     <div class="popup " id="popupImg">
         <div class="popup__img-container">
-            <button type="button" class="popup__close" id="closeImg"><img class="popup__close-img" src="./images/Close-Icon.svg"
-                    alt="х"></button>
+            <button type="button" class="popup__close" id="closeImg"><img class="popup__close-img"
+                    src="./images/Close-Icon.svg" alt="х"></button>
             <img class="popup__img" src="." alt=".">
 
             <p class="popup__text"> </p>
@@ -88,6 +95,7 @@
         </li>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
