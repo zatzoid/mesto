@@ -24,9 +24,10 @@ const setEventListeners = (formEl, { inputSelector, submitButtonSelector, ...res
   const btnEl = formEl.querySelector(submitButtonSelector);
 
   toggleButtonState(inputList, btnEl, rest);
+
+
   inputList.forEach((inputEl) => {
     inputEl.addEventListener('input', function () {
-
       toggleButtonState(inputList, btnEl, rest)
       checkValid(formEl, inputEl, rest)
     })
@@ -41,7 +42,7 @@ const hasInvalidInput = (inputList) => {
   })
 }
 const checkValid = (formEl, inputEl, { ...rest }) => {
-  console.log('check')
+
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, rest);
   }
@@ -49,11 +50,15 @@ const checkValid = (formEl, inputEl, { ...rest }) => {
     hideInputError(formEl, inputEl, rest);
   }
 }
-
+/* костыль, дизейблит кнопку сейва при открытии*/
+function disableBtnSubmit(btnEl) {
+  btnEl.classList.add('popup__save_disabled')
+  btnEl.setAttribute('disabled', true);
+}
 const toggleButtonState = (inputList, btnEl, { inactiveButtonClass, ...rest }) => {
+ 
   if (hasInvalidInput(inputList, rest)) {
-    btnEl.classList.add(inactiveButtonClass);
-    btnEl.setAttribute('disabled', true);
+    disableBtnSubmit(btnEl)
   }
   else {
     btnEl.classList.remove(inactiveButtonClass);

@@ -16,6 +16,7 @@ const adderForm = popupAdder.querySelector("#adderForm");
 const closeAdderBtn = popupAdder.querySelector("#closeAdder")
 const inputPlace = adderForm.querySelector("#inputPlace");
 const inputPhoto = adderForm.querySelector("#inputPhoto");
+const saveAddBtn = document.querySelector('#saveAddBtn')
 /* template */
 const cardTemplate = document.querySelector("#card-template").content;
 const cardEl = cardTemplate.querySelector(".card");
@@ -23,6 +24,7 @@ const cardImg = cardEl.querySelector(".card__img");
 const cardText = cardEl.querySelector(".card__text");
 /* img fullscreen popup */
 const popupImg = document.querySelector("#popupImg");
+const closeImg = document.querySelector("#closeImg")
 
 
 /* CARD ADDER */
@@ -46,11 +48,7 @@ function addNewCard(element) {
     cardEl.remove();
 
   });
-  /* close */
-  const closeImg = document.querySelector("#closeImg")
-  closeImg.addEventListener("click", () => {
-    closePopup(popupImg);
-  });
+
   /* popup img */
   const popupImgEl = popupImg.querySelector(".popup__img");
   const popupImgText = popupImg.querySelector(".popup__text");
@@ -97,7 +95,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener('click', closePopupClick);
-  document.removeEventListener('keydown', closePopupEsc)
+  document.removeEventListener('keydown', closePopupEsc);
 }
 /* функции закрытия */
 function closePopupClick(evt) {
@@ -116,16 +114,12 @@ openRedactorBtn.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputStatus.value = profileStatus.textContent
 });
-/* костыль, дизейблит кнопку сейва при открытии*/
-function disableBtnSubmit(formEl) {
-  const btnSave = formEl.querySelector('.popup__save')
-  btnSave.classList.add('popup__save_disabled')
-  btnSave.setAttribute('disabled', true);
-}
+
 /* open adder */
 openAdderBtn.addEventListener("click", () => {
   openPopup(popupAdder);
-  disableBtnSubmit(popupAdder)
+ disableBtnSubmit(popupAdder.querySelector('.popup__save')); 
+  
 });
 
 /* close redactor*/
@@ -138,7 +132,11 @@ closeAdderBtn.addEventListener("click", () => {
   closePopup(popupAdder)
   adderForm.reset()
 });
+/* close img*/
 
+closeImg.addEventListener("click", () => {
+  closePopup(popupImg);
+});
 /* save */
 
 function handleFormSubmit(evt) {
