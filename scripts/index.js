@@ -136,7 +136,7 @@ class AutoAdd extends Card {
 
 }
 
-const autoAdd = new AutoAdd(memes, "#card-template");
+const autoAdd = new AutoAdd(initialCards, "#card-template");
 autoAdd.addCards();
 
 class PhotoSaver extends Card {
