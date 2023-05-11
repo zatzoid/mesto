@@ -1,6 +1,18 @@
 .card__img {
     cursor: pointer;
-    height: 282px;
-    width: 282px;
+    min-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+    object-position: center center; 
+   scale: 1.2;
+   transition: 0.5s;
+   
 }
 
+
+.card__img:hover {
+
+transform: scale(0.9);
+}

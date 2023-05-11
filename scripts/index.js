@@ -136,7 +136,7 @@ class AutoAdd extends Card {
 
 }
 
-const autoAdd = new AutoAdd(initialCards, "#card-template");
+const autoAdd = new AutoAdd(memes, "#card-template");
 autoAdd.addCards();
 
 class PhotoSaver extends Card {
@@ -151,8 +151,8 @@ class PhotoSaver extends Card {
       link: inputPhoto.value,
       name: inputPlace.value
     };
-      cardsContainer.prepend(createCard(newCardValue));
-    
+    cardsContainer.prepend(createCard(newCardValue));
+
     closePopup(popupAdder);
   }
   setEventListeners() {
@@ -183,7 +183,7 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
   popup.removeEventListener('click', closePopupClick);
   document.removeEventListener('keydown', closePopupEsc);
- 
+
 }
 /* функции закрытия */
 function closePopupClick(evt) {
@@ -208,12 +208,12 @@ openAdderBtn.addEventListener("click", () => {
   adderForm.reset();
   formValidator['adderForm'].resetValidation();
 });
- const formCloseBtns = document.querySelectorAll('.popup__close');
+const formCloseBtns = document.querySelectorAll('.popup__close');
 
- formCloseBtns.forEach((button) => {
-   const popup = button.closest('.popup');
-   button.addEventListener('click', () => closePopup(popup));
- });
+formCloseBtns.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 
 function handleFormSubmit(evt) {
