@@ -20,9 +20,10 @@ const saveAddBtn = document.querySelector('#saveAddBtn')
 /* img fullscreen popup */
 const popupImg = document.querySelector("#popupImg");
 const closeImg = document.querySelector("#closeImg")
+const popupImgEl = popupImg.querySelector(".popup__img");
+const popupImgText = popupImg.querySelector(".popup__text");
 
 
- 
 /* validator */
 export const config = {
   formSelector: '.popup__form',
@@ -32,13 +33,30 @@ export const config = {
   inputErrorClass: 'popup_input-error',
   errorClass: 'popup__element-error'
 };
+
 import { FormValidator } from "./FormValidator.js";
- 
+const formValidator = {};
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formEl) => {
+    const validator = new FormValidator(config, formEl)
+
+    const formName = formEl.getAttribute('name')
+
+
+    formValidator[formName] = validator;
+
+    validator.enableValidation();
+  });
+};
+
+enableValidation(config);
+/* рабочий
 const formElement = Array.from(document.querySelectorAll(config.formSelector));
 formElement.forEach((formEl) => {
   const formValidator = new FormValidator(config, formEl);
   formValidator.enableValidation();
-});
+}); */
 /* card */
 /* дефолтные картинки */
 const initialCards = [
@@ -96,6 +114,10 @@ const memes = [
 ];
 import { Card } from "./card.js";
 
+function createCard(element) {
+  const cardElement = new Card(element, '#card-template', handleCardClick).createCard();
+  return cardElement
+}
 
 class AutoAdd extends Card {
   constructor(element, tempSelector) {
@@ -106,8 +128,8 @@ class AutoAdd extends Card {
 
   addCards() {
     this._element.forEach(element => {
-      const card = new Card(element, this._tempSelector).createCard();
-      cardsContainer.append(card);
+
+      cardsContainer.append(createCard(element));
     });
   }
 
@@ -123,26 +145,23 @@ class PhotoSaver extends Card {
     this._tempSelector = tempSelector;
   }
 
-  saveAddedPhoto(event) {
+  _saveAddedPhoto(event) {
     event.preventDefault();
     const newCardValue = {
       link: inputPhoto.value,
       name: inputPlace.value
     };
-
-    const card = new Card(newCardValue, this._tempSelector).createCard();
-    cardsContainer.prepend(card);
-
+      cardsContainer.prepend(createCard(newCardValue));
+    
     closePopup(popupAdder);
   }
   setEventListeners() {
-    adderForm.addEventListener('submit', this.saveAddedPhoto.bind(this));
+    adderForm.addEventListener('submit', this._saveAddedPhoto.bind(this));
   }
 }
 /* ----- */
 const photoSaver = new PhotoSaver('#card-template');
 photoSaver.setEventListeners();
-adderForm.addEventListener("submit", photoSaver);
 /* open popup*/
 
 function openPopup(popup) {
@@ -151,18 +170,20 @@ function openPopup(popup) {
   document.addEventListener('keydown', closePopupEsc)
 }
 
+export function handleCardClick(element) {
+
+  popupImgEl.src = element.link;
+  popupImgEl.alt = element.name;
+  popupImgText.textContent = element.name;
+  openPopup(popupImg);
+};
 
 /* close popup*/
 function closePopup(popup) {
-
-  let popupEl = popup.querySelector('.popup__form')
   popup.classList.remove("popup_opened");
-  if (popup !== popupImg) {
-    popupEl.reset();
-  }
-
   popup.removeEventListener('click', closePopupClick);
   document.removeEventListener('keydown', closePopupEsc);
+ 
 }
 /* функции закрытия */
 function closePopupClick(evt) {
@@ -175,37 +196,25 @@ function closePopupEsc(evt) {
     closePopup(document.querySelector('.popup_opened'))
   }
 }
-/* open redactor */
 openRedactorBtn.addEventListener("click", () => {
   openPopup(popupRedactor);
   inputName.value = profileName.textContent;
-  inputStatus.value = profileStatus.textContent
+  inputStatus.value = profileStatus.textContent;
+  formValidator['redactorForm'].resetValidation();
 });
 
-/* open adder */
 openAdderBtn.addEventListener("click", () => {
   openPopup(popupAdder);
-  saveAddBtn.classList.add('popup__save_disabled')
-  saveAddBtn.disabled = true
-
+  adderForm.reset();
+  formValidator['adderForm'].resetValidation();
 });
+ const formCloseBtns = document.querySelectorAll('.popup__close');
 
-/* close redactor*/
-closeRedactorBtn.addEventListener("click", () => {
-  closePopup(popupRedactor);
-});
+ formCloseBtns.forEach((button) => {
+   const popup = button.closest('.popup');
+   button.addEventListener('click', () => closePopup(popup));
+ });
 
-/* close adder */
-closeAdderBtn.addEventListener("click", () => {
-  closePopup(popupAdder)
-
-});
-/* close img*/
-
-closeImg.addEventListener("click", () => {
-  closePopup(popupImg);
-});
-/* save */
 
 function handleFormSubmit(evt) {
   evt.preventDefault();

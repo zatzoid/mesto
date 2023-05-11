@@ -1,44 +1,36 @@
-
+import { handleCardClick } from"./index.js";
   export class Card {
-    constructor(element, tempSelector) {
+    constructor(element, tempSelector, handleCardClick) {
       this._element = element;
       this._tempSelector = tempSelector;
-  
+      this._handleCardClick = handleCardClick;
     }
     _getTemplate() {
       const cardTemplate = document.querySelector(this._tempSelector).content;
       const cardEl = cardTemplate.querySelector(".card").cloneNode(true);
+      
       return cardEl;
   
     }
-    _setCardValue(cardEl) {
-      const cardImg = cardEl.querySelector(".card__img");
-      const cardText = cardEl.querySelector(".card__text");
+    _setCardValue() {
+      
   
-      cardImg.src = this._element.link;
-      cardImg.alt = this._element.name;
-      cardText.textContent = this._element.name;
-  
-    }
-  
-  
-  
-    _like(cardEl) {
-      cardEl.querySelector(".card__like").classList.toggle('card__like_active')
-    }
-    _popupImg() {
-      const popupImgEl = popupImg.querySelector(".popup__img");
-      const popupImgText = popupImg.querySelector(".popup__text");
-      openPopup(popupImg);
-      popupImgEl.src = this._element.link;
-      popupImgEl.alt = this._element.name;
-      popupImgText.textContent = this._element.name
+      this._cardImg.src = this._element.link;
+      this._cardImg.alt = this._element.name;
+      this._cardText.textContent = this._element.name;
   
     }
+  
+  
+  
+    _like() {
+      this._cardLike.classList.toggle('card__like_active')
+    }
+    
     _setEventListeners(cardEl) {
   
-      cardEl.querySelector(".card__img").addEventListener("click", () => {
-        this._popupImg()
+      this._cardImg.addEventListener('click', () => {
+        this._handleCardClick(this._element)
       });
   
       cardEl.querySelector(".card__like").addEventListener("click", () => {
@@ -51,6 +43,11 @@
     }
     createCard() {
       const cardEl = this._getTemplate();
+      this._cardImg = cardEl.querySelector(".card__img");
+      this._cardText= cardEl.querySelector(".card__text");
+      this._cardLike = cardEl.querySelector(".card__like");
+      this._popupImgEl = popupImg.querySelector(".popup__img");
+      this._popupImgText = popupImg.querySelector(".popup__text");
       this._setCardValue(cardEl);
       this._setEventListeners(cardEl);
   
