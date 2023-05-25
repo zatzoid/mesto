@@ -30,6 +30,7 @@ import { handleCardClick } from"./index.js";
     _setEventListeners(cardEl) {
   
       this._cardImg.addEventListener('click', () => {
+        
         this._handleCardClick(this._element)
       });
   

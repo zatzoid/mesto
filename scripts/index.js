@@ -2,29 +2,28 @@
 /* redactor */
 const profileName = document.querySelector(".profile__name");
 const profileStatus = document.querySelector(".profile__status");
-const popupRedactor = document.querySelector("#popupRedactor");
-const openRedactorBtn = document.querySelector(".profile__redactor");
 const inputName = popupRedactor.querySelector("#nameInput");
 const inputStatus = popupRedactor.querySelector("#statusInput");
-const closeRedactorBtn = popupRedactor.querySelector("#closeRedactor");
+const openRedactorBtn = document.querySelector(".profile__redactor");
+
 const formRedactor = popupRedactor.querySelector("#formRedactor");
 /* img add popup */
 const cardsContainer = document.querySelector(".cards");
-const popupAdder = document.querySelector("#popupAdder");
+
 const openAdderBtn = document.querySelector(".profile__add");
 const adderForm = popupAdder.querySelector("#adderForm");
-const closeAdderBtn = popupAdder.querySelector("#closeAdder")
 const inputPlace = adderForm.querySelector("#inputPlace");
 const inputPhoto = adderForm.querySelector("#inputPhoto");
-const saveAddBtn = document.querySelector('#saveAddBtn')
 /* img fullscreen popup */
-const popupImg = document.querySelector("#popupImg");
-const closeImg = document.querySelector("#closeImg")
-const popupImgEl = popupImg.querySelector(".popup__img");
-const popupImgText = popupImg.querySelector(".popup__text");
+
 
 
 /* validator */
+
+import Popup from "./popup.js";
+import PopupWithImage from "./popupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 export const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__element',
@@ -51,13 +50,7 @@ const enableValidation = (config) => {
 };
 
 enableValidation(config);
-/* рабочий
-const formElement = Array.from(document.querySelectorAll(config.formSelector));
-formElement.forEach((formEl) => {
-  const formValidator = new FormValidator(config, formEl);
-  formValidator.enableValidation();
-}); */
-/* card */
+
 /* дефолтные картинки */
 const initialCards = [
   {
@@ -113,10 +106,11 @@ const memes = [
   }
 ];
 import { Card } from "./card.js";
+import Section from "./section.js";
 
 function createCard(element) {
-  const cardElement = new Card(element, '#card-template', handleCardClick).createCard();
-  return cardElement
+  const cardElement = new Card(element, '#card-template', handleCardClick);
+  return cardElement.createCard();
 }
 
 class AutoAdd extends Card {
@@ -136,13 +130,14 @@ class AutoAdd extends Card {
 
 }
 
-const autoAdd = new AutoAdd(initialCards, "#card-template");
+const autoAdd = new AutoAdd(memes, "#card-template");
 autoAdd.addCards();
 
 class PhotoSaver extends Card {
   constructor(tempSelector) {
     super();
     this._tempSelector = tempSelector;
+    this._popup = new Popup("#popupAdder")
   }
 
   _saveAddedPhoto(event) {
@@ -152,8 +147,7 @@ class PhotoSaver extends Card {
       name: inputPlace.value
     };
     cardsContainer.prepend(createCard(newCardValue));
-
-    closePopup(popupAdder);
+    this._popup.closePopup();
   }
   setEventListeners() {
     adderForm.addEventListener('submit', this._saveAddedPhoto.bind(this));
@@ -162,65 +156,54 @@ class PhotoSaver extends Card {
 /* ----- */
 const photoSaver = new PhotoSaver('#card-template');
 photoSaver.setEventListeners();
-/* open popup*/
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  popup.addEventListener('click', closePopupClick);
-  document.addEventListener('keydown', closePopupEsc)
-}
+const defaultCard = new Section({items: memes, renderer:
+() => { 
+const card = new Card()
+
+}, container: ".cards"})
 
 export function handleCardClick(element) {
 
-  popupImgEl.src = element.link;
-  popupImgEl.alt = element.name;
-  popupImgText.textContent = element.name;
-  openPopup(popupImg);
+  const popupImg = new PopupWithImage("#popupImg", element);
+  console.log(popupImg)
+  popupImg.openPopupWithImage(element);
+
 };
 
-/* close popup*/
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  popup.removeEventListener('click', closePopupClick);
-  document.removeEventListener('keydown', closePopupEsc);
+function openPopupWithForm(popupSelector, formValIndex, submitCallback) {
+  const popup = new PopupWithForm(popupSelector, (inputValues)=> {
+   
+  submitCallback(inputValues)
+ 
+  });
+  popup.openPopup();
+  
+  formValidator[formValIndex].resetValidation();
+  
+}
 
-}
-/* функции закрытия */
-function closePopupClick(evt) {
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target)
-  }
-};
-function closePopupEsc(evt) {
-  if (evt.key === 'Escape') {
-    closePopup(document.querySelector('.popup_opened'))
-  }
-}
 openRedactorBtn.addEventListener("click", () => {
-  openPopup(popupRedactor);
-  inputName.value = profileName.textContent;
-  inputStatus.value = profileStatus.textContent;
-  formValidator['redactorForm'].resetValidation();
+  const userInfo = new UserInfo({ nameProfile: ".profile__name", statusProfile: ".profile__status" });
+
+  openPopupWithForm("#popupRedactor", 'redactorForm', (inputValues) => {
+    userInfo.setUserInfo(inputValues);
+    
+  });
+
+  const userData = userInfo.getUserInfo();
+
+  inputName.value = userData.name;
+  inputStatus.value = userData.status;
+
 });
 
 openAdderBtn.addEventListener("click", () => {
-  openPopup(popupAdder);
-  adderForm.reset();
-  formValidator['adderForm'].resetValidation();
-});
-const formCloseBtns = document.querySelectorAll('.popup__close');
+  openPopupWithForm("#popupAdder", 'adderForm')
 
-formCloseBtns.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
 });
 
 
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileStatus.textContent = inputStatus.value;
-  closePopup(popupRedactor);
-};
 
-formRedactor.addEventListener("submit", handleFormSubmit);
+
+

@@ -1,8 +1,18 @@
+@keyframes scale {  
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
 .card__like_active {
 
     background: url(../../../../images/Union.svg) center no-repeat;
     
     width: 22px;
     height: 19px;
-   
+  
+   animation-name: scale;
+   animation-duration: 0.4s;
+   animation-fill-mode: forwards;
+   animation-timing-function: linear;
+   animation-iteration-count: 1;
 }

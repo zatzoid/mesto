@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    
     <title>mesto</title>
 </head>
 
@@ -14,7 +14,7 @@
         <div class="popup__content">
 
             <button type="button" class="popup__close" id="closeRedactor"> <img class="popup__close-img"
-                    src="./images/Close-Icon.svg" alt="х"> </button>
+                    src="<%=require('./images/Close-Icon.svg')%>" alt="х"> </button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="popup__form" name="redactorForm" id="formRedactor" novalidate>
                 <input class="popup__element " id="nameInput" type="text" name="redactorName" required minlength="2"
@@ -34,7 +34,7 @@
         <div class="popup__content">
 
             <button type="button" class="popup__close" id="closeAdder"> <img class="popup__close-img"
-                    src="./images/Close-Icon.svg" alt="х"> </button>
+                    src="<%=require('./images/Close-Icon.svg')%>" alt="х"> </button>
             <h2 class="popup__heading">Новое место</h2>
             <form class="popup__form" id="adderForm" name="adderForm" novalidate>
                 <input class="popup__element " id="inputPlace" type="text" name="inputPlace" placeholder="название"
@@ -53,7 +53,7 @@
     <div class="popup " id="popupImg">
         <div class="popup__img-container">
             <button type="button" class="popup__close" id="closeImg"><img class="popup__close-img"
-                    src="./images/Close-Icon.svg" alt="х"></button>
+                    src="<%=require('./images/Close-Icon.svg')%>" alt="х"></button>
             <img class="popup__img" src="." alt=".">
 
             <p class="popup__text"> </p>
@@ -61,20 +61,20 @@
     </div>
 
     <header class="header">
-        <img class="header__logo" src="./images/logo-white.svg" alt="местечко">
+        <img class="header__logo" src="<%=require('./images/logo-white.svg')%>" alt="местечко">
     </header>
     <main class="content">
 
         <section class="profile">
-            <img class="profile__pic" src="./images/profile-pic2.jpg" alt="профиль-пик">
+            <img class="profile__pic" src="<%=require('./images/profile-pic2.jpg')%>" alt="профиль-пик">
             <div class="profile__info">
 
                 <h1 class="profile__name">Паблик с мемами</h1>
                 <button type="button" class="profile__redactor"> <img class="profile__redactor-img"
-                        src="./images/redactor.svg" alt="редактор"></button>
+                        src="<%=require('./images/redactor.svg')%>" alt="редактор"></button>
                 <p class="profile__status">Исследователь океана </p>
             </div>
-            <button type="button" class="profile__add"> <img src="./images/plus.svg" alt="плюс"></button>
+            <button type="button" class="profile__add"> <img src=".<%=require('/images/plus.svg')%>" alt="плюс"></button>
         </section>
         <section class="elements">
             <ul class="cards">
@@ -95,9 +95,9 @@
         </li>
     </template>
     <script type="module" src="./scripts/index.js"></script>
-     <script type="module" src="./scripts/UserInfo.js"></script>
+    <script type="module" src="./scripts/card.js"></script>
     
-    <!-- <script type="module" src="./scripts/FormValidator.js"></script> -->
+    <script type="module" src="./scripts/FormValidator.js"></script>
 
 </body>
 
