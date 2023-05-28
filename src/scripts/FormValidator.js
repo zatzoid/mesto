@@ -16,8 +16,8 @@ export class FormValidator {
       inputEl.addEventListener('input', () => {
         this._toggleButtonState();
         this._checkValid(inputEl);
-       
-        
+
+
       });
     });
 
@@ -25,9 +25,9 @@ export class FormValidator {
       evt.preventDefault();
     });
 
-   
+
   }
-  
+
   _checkValid(inputEl) {
     if (!inputEl.validity.valid) {
       this._showInputError(inputEl, inputEl.validationMessage);
@@ -36,10 +36,10 @@ export class FormValidator {
       this._hideInputError(inputEl);
       return false;
     }
-    
+
   }
   resetValidation() {
-    this._toggleButtonState(); 
+    this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement)
@@ -76,7 +76,7 @@ export class FormValidator {
 
 }
 
-import { config } from "./index.js";
+
 
 
 

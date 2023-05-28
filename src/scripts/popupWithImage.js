@@ -14,6 +14,7 @@ export default class PopupWithImage extends Popup {
     }
     openPopupWithImage(element) {
       super.openPopup();
+      super.setEventListeners();
       this._setValue(element);
     }
   }
