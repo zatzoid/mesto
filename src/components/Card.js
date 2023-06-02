@@ -39,11 +39,9 @@ export class Card {
     });
   }
   createCard() {
-   
     this._cardImg = this.cardEl.querySelector(".card__img");
     this._cardText = this.cardEl.querySelector(".card__text");
     this._cardLike = this.cardEl.querySelector(".card__like");
-    this._popupImgEl = popupImg.querySelector(".popup__img");
     this._popupImgText = popupImg.querySelector(".popup__text");
     this._setCardValue();
     this._setEventListeners();
