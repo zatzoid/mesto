@@ -128,6 +128,8 @@ async function submitAvatarForm(inputValues) {
     avatarForm.closePopup()
   } catch (error) {
     console.error(error);
+  } finally{
+    avatarForm.loading(false)
   }
 }
 avatarBtn.addEventListener('click', () => {
@@ -142,6 +144,7 @@ redactorForm.setEventListeners();
 
 
 async function submitRedactorForm(inputValues) {
+  redactorForm.loading(true,'Сохранение...')
   try {
 
     const res = await api.changeUserInfo(inputValues);
@@ -150,6 +153,8 @@ async function submitRedactorForm(inputValues) {
   } catch (err) {
     console.log(err);
   }
+  finally{
+    redactorForm.loading(false)}
 }
 openRedactorBtn.addEventListener("click", () => {
   redactorForm.openPopup();
@@ -181,7 +186,9 @@ async function saveNewCard(value) {
   catch (err) {
     console.log(err)
   }
-
+  finally{
+    addForm.loading(false)
+  }
 }
 openAdderBtn.addEventListener("click", () => {
   addForm.openPopup();

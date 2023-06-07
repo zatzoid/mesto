@@ -7,6 +7,7 @@ export default class PopupWithForm extends Popup {
     this._formElement = this._popupEl.querySelector('.popup__form');
     this._inputList = this._formElement.querySelectorAll('.popup__element');
     this._subBtn = this._formElement.querySelector('.popup__save')
+    this._subBtnDefaultText = this._subBtn.textContent
   }
 
   _getInputValues() {
@@ -20,6 +21,9 @@ export default class PopupWithForm extends Popup {
   loading(boolean, text){
   if(boolean){
     this._subBtn.textContent = text
+  }
+  else{
+    this._subBtn.textContent = this._subBtnDefaultText
   }
   
   }
