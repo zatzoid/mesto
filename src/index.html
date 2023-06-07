@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>mesto</title>
 </head>
 
@@ -17,10 +17,10 @@
                     src="<%=require('./images/Close-Icon.svg')%>" alt="х"> </button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="popup__form" name="redactorForm" id="formRedactor" novalidate>
-                <input class="popup__element " id="nameInput" type="text" name="redactorName" required minlength="2"
+                <input class="popup__element " id="nameInput" type="text" name="name" required minlength="2"
                     maxlength="40">
                 <span class="popup__element-error popup__element-error_size nameInput-error"></span>
-                <input class="popup__element " id="statusInput" type="text" name="redactorStatus" required minlength="2"
+                <input class="popup__element " id="statusInput" type="text" name="about" required minlength="2"
                     maxlength="200">
                 <span class="popup__element-error popup__element-error_size statusInput-error"></span>
 
@@ -59,21 +59,52 @@
             <p class="popup__text"> </p>
         </div>
     </div>
+    <div class="popup" id="popupConfirm"><!-- cccccccccccccccccccccc -->
+        <div class="popup__content ">
+            <form class="popup__form popup__form_confirm" id="confirmForm" name="confirmForm" novalidate>
+                <button type="button" class="popup__close" id="closeConfirm"> <img class="popup__close-img"
+                        src="<%=require('./images/Close-Icon.svg')%>" alt="нет, я пошутил"> </button>
+                <h2 class="popup__heading">Вы уверены?</h2>
+                <button class="popup__save" id="YesConfirm" type="submit">
+                    <p>Да</p>
+                </button>
+            </form>
+        </div>
+
+    </div>
+    <div class="popup" id="popupAvatar"><!--ava -->
+        <div class="popup__content">
+
+            <button type="button" class="popup__close" id="closeAvatar"> <img class="popup__close-img"
+                    src="<%=require('./images/Close-Icon.svg')%>" alt="х"> </button>
+            <h2 class="popup__heading">Обновите аватар</h2>
+            <form class="popup__form" id="AvatarForm" name="avatarForm" novalidate>
+                <input class="popup__element " id="avatar" type="url" name="avatar" placeholder="ссылка" required>
+                <span class="popup__element-error popup__element-error_size avatar-error"></span>
+                <button class="popup__save" id="saveAddBtn" type="submit">
+                    Сохранить
+                </button>
+            </form>
+        </div>
+    </div>
     <header class="header">
         <img class="header__logo" src="<%=require('./images/logo-white.svg') %>" alt="местечко">
     </header>
     <main class="content">
 
         <section class="profile">
-            <img class="profile__pic" src="<%=require('./images/profile-pic2.jpg')%>" alt="профиль-пик">
+            <div class="profile__pic-div"><!-- <%=require('./images/profile-pic2.jpg')%> -->
+                <img class="profile__pic" src="" alt="профиль-пик">
+            </div>
             <div class="profile__info">
 
-                <h1 class="profile__name">Паблик с мемами</h1>
+                <h1 class="profile__name"></h1>
                 <button type="button" class="profile__redactor"> <img class="profile__redactor-img"
                         src="<%=require('./images/redactor.svg')%>" alt="редактор"></button>
-                <p class="profile__status">Исследователь океана </p>
+                <p class="profile__status"> </p>
             </div>
-            <button type="button" class="profile__add"> <img src="<%=require('./images/plus.svg')%>" alt="плюс"></button>
+            <button type="button" class="profile__add"> <img src="<%=require('./images/plus.svg')%>"
+                    alt="плюс"></button>
         </section>
         <section class="elements">
             <ul class="cards">
@@ -89,11 +120,14 @@
             <button class="card__cleaner" type="button"></button>
             <div class="card__img-container"><img class="card__img" src="." alt="."></div>
             <div class="card__description">
-                <h2 class="card__text"></h2> <button type="button" class="card__like "> </button>
+                <h2 class="card__text"></h2>
+                <div><button type="button" class="card__like "> </button>
+                    <p class="card__like-nmbr">  </p>
+                </div>
             </div>
         </li>
     </template>
-    
+
 
 </body>
 

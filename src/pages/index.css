@@ -25,6 +25,7 @@
 @import url(../blocks/card/__like/_active/card__like_active.css);
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__img-container/card__img-container.css);
+@import url(../blocks/card/__like-nmbr/card__like-nmbr.css);
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -46,5 +47,5 @@
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__img-container/popup__img-container.css);
 @import url(../blocks/popup/__text/popup__text.css);
-
-
+@import url(../blocks/popup/__form/_confirm/popup__form_confirm.css);
+@import url(../blocks/profile/__pic-div/profile__pic-div.css);

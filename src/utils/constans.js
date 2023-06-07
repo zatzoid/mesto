@@ -2,6 +2,7 @@ export const inputName = popupRedactor.querySelector("#nameInput");
 export const inputStatus = popupRedactor.querySelector("#statusInput");
 export const openRedactorBtn = document.querySelector(".profile__redactor");
 export const openAdderBtn = document.querySelector(".profile__add");
+export const avatarBtn = document.querySelector('.profile__pic-div')
 export const memes = [
     {
         name: 'Архыз',
@@ -28,6 +29,7 @@ export const memes = [
         link: 'https://sun9-65.userapi.com/impg/y8tRn1Aj_6cE7_60GthiM2VcQjiHyPMdyJH09A/GIhFG3uQeWk.jpg?size=1920x1080&quality=96&sign=9d84f70a970a5404b7b047fa4d5d6523&type=album'
     }
 ];
+
 export const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__element',
