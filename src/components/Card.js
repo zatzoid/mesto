@@ -56,7 +56,7 @@ export class Card {
   _setEventListeners() {
 
     this._cardImg.addEventListener('click', () => {
-
+console.log(this._element)
       this._handleCardClick(this._element)
     });
 
