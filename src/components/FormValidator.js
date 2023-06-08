@@ -3,15 +3,14 @@ export class FormValidator {
   constructor(settings, formEl) {
     this._settings = settings;
     this._formEl = formEl;
-
+    this._inputList = Array.from(this._formEl.querySelectorAll(this._settings.inputSelector));
     this._buttonElement = this._formEl.querySelector(this._settings.submitButtonSelector);
   }
   enableValidation() {
 
     this._setEventListeners();
   }
-  _setEventListeners(_formEl) {
-    this._inputList = Array.from(this._formEl.querySelectorAll(this._settings.inputSelector));
+  _setEventListeners() {
     this._inputList.forEach((inputEl) => {
       inputEl.addEventListener('input', () => {
         this._toggleButtonState();

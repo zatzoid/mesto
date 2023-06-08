@@ -8,7 +8,7 @@ export default class API {
             return res.json();
         }
         else {
-            console.log(res.status)
+            Promise.reject(res.status)
         }
     }
     defaultImg() {
@@ -19,7 +19,7 @@ export default class API {
             .then(this._errorCheck)
 
     }
-    getUserId() {
+    getUserInfo() {
         return fetch(`${this._link}/users/me`, {
             method: 'GET',
             headers: this._headers
@@ -66,7 +66,7 @@ export default class API {
             .then(this._errorCheck);
     }
 
-    desLike(cardId) {
+    disLike(cardId) {
         return fetch(`${this._link}/cards/${cardId}/likes`, {
             method: 'DELETE',
             headers: this._headers

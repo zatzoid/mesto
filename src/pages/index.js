@@ -32,14 +32,14 @@ const api = new API({
 
 })
 let userId
-Promise.all([api.getUserId(), api.defaultImg()])
+Promise.all([api.getUserInfo(), api.defaultImg()])
   .then(([data, cards]) => {
     console.log(data)
     userId = data._id;
     userInfo.setUserInfo(data);
     userInfo.setUserAvatar(data);
     console.log(cards)
-    section.renderItems(cards);
+    cardContainer.renderItems(cards);
 
   })
   .catch((err) => {
@@ -59,12 +59,12 @@ const enableValidation = (config) => {
 
 enableValidation(config);
 //
-const section = new Section(renderer, ".cards")
+const cardContainer = new Section(renderer, ".cards")
 
 
 function renderer(el) {
   const cardElement = createCard(el)
-  section.addItem(cardElement)
+  cardContainer.addItem(cardElement)
 }
 //
 
@@ -74,16 +74,17 @@ function createCard(element) {
   const card = new Card(element, '#card-template', handleCardClick, confirm, userId,
     async () => {//putlike
       try {
-        const res = await api.putLike(element._id);
-
+        const res = await api.putLike(element._id)
         card.likeCount(res)
+        card.activeLike()
       }
       catch (err) { console.log(err) }
-    }, async () => {//deslike
+    }, async () => {//dislike
       try {
-        const res = await api.desLike(element._id);
+        const res = await api.disLike(element._id);
 
-        card.likeCount(res)
+        card.likeCount(res);
+        card.disLike();
       }
       catch (err) { console.log(err) }
     });
@@ -179,7 +180,7 @@ async function saveNewCard(value) {
   }
   try {
     const res = await api.createNewCard(newCardValue);
-    section.addItem(createCard(res));
+    cardContainer.addItem(createCard(res));
     addForm.loading(false)
     addForm.closePopup();
   }

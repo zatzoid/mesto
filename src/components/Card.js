@@ -1,17 +1,17 @@
 
 export class Card {
-  constructor(element, tempSelector, handleCardClick, confirm, userId, putLike, desLike) {
+  constructor(element, tempSelector, handleCardClick, confirm, userId, putLike, disLike) {
     this._element = element;
     this._likes = this._element.likes;
     this._tempSelector = tempSelector;
     this._handleCardClick = handleCardClick;
     this._confirm = confirm
     this.cardEl = this._getTemplate();
-    this._Owner = element.owner._id;
+    this._owner = element.owner._id;
     this._id = element._id
     this._userId = userId
     this._putLike = putLike
-    this._desLike = desLike
+    this._disLike = disLike
   }
   _getTemplate() {
     const cardTemplate = document.querySelector(this._tempSelector).content;
@@ -38,34 +38,38 @@ export class Card {
         this._cardLike.classList.add('card__like_active')
       }
     })
-
   }
+  activeLike() {
+    this._cardLike.classList.add('card__like_active');
+  }
+  disLike() {
 
+    this._cardLike.classList.remove('card__like_active');
+  }
   _toggleLike() {
     if (this._cardLike.classList.contains('card__like_active')) {
-      this._cardLike.classList.remove('card__like_active')
-      this._desLike(this._element)
+
+      this._disLike(this._element)
     }
     else {
-      this._cardLike.classList.add('card__like_active')
+
       this._putLike(this._element)
+
     }
+
   }
-
-
+  
   _setEventListeners() {
 
     this._cardImg.addEventListener('click', () => {
-console.log(this._element)
+      console.log(this._element)
       this._handleCardClick(this._element)
     });
 
     this._cardLike.addEventListener("click", () => {
-      this._toggleLike();
-
-      this.likeCount(this._element)/////////////////////
+      this._toggleLike()
     })
-    if (this._Owner === this._userId) {
+    if (this._owner === this._userId) {
       this._cardCleaner.addEventListener("click", () => {
         this._confirm(this._element, this.cardEl)
       })
