@@ -8,7 +8,7 @@ export default class API {
             return res.json();
         }
         else {
-            Promise.reject(res.status)
+           return Promise.reject(res.status)
         }
     }
     defaultImg() {
