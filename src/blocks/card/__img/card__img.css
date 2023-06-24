@@ -8,7 +8,7 @@
     object-position: center center;
     scale: 1.2;
     transition: 0.5s;
-
+    cursor: url(../../../images/cursorLoupe.svg), pointer;
 }
 
 
